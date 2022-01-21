@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import Head from "next/head";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
 
       <main>
         <h1 className="title">
-          Read{' '} 
+          Read{" "}
           <Link href="/posts/first-post">
             <a>this page!</a>
           </Link>
@@ -51,15 +51,13 @@ export default function Home() {
           </a>
         </div>
       </main>
-
       <footer>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className="logo" />
+          Powered by <img src="/vercel.svg" alt="Vercel" className="logo" />
         </a>
       </footer>
 
@@ -209,5 +207,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }
