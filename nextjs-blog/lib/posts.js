@@ -36,3 +36,45 @@ export function getSortedPostsData() {
     }
   });
 }
+
+export function getAllPostIds() {
+  const fileNames = fs.readdirSync(postsDirectory);
+
+  // 此處設置一定要是陣列，而且陣列內需為物件，物件要包含 params
+
+  // Return an array that looks like this:
+  // [
+  //     {
+  //         params: {
+  //             id: 'ssg-ssr'
+  //         }
+  //     },
+  //     {
+  //         params: {
+  //             id: 'pre-rendering'
+  //         }
+  //     }
+  // ]
+  return fileNames.map((fileName) => {
+    return {
+      params: {
+        // 由於檔案名稱為 [id].js，此處 key 須為 id
+        id: fileName.replace(/\.md$/, ""),
+      },
+    };
+  });
+}
+
+export function getPostData(id) {
+  const fullPath = path.join(postsDirectory, `${id}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+
+  // Use gray-matter to parse the post metadata section
+  const matterResult = matter(fileContents);
+
+  // Combine the data with the id
+  return {
+    id,
+    ...matterResult.data,
+  };
+}
