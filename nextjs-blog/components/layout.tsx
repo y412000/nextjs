@@ -3,11 +3,18 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
+import React from "react";
 
 const name = "Jane";
 export const siteTitle = "Next.js Sample Website";
 
-export default function Layout({ children, home }) {
+export default function Layout({
+  children,
+  home,
+}: {
+  children: React.ReactNode;
+  home?: boolean;
+}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -16,7 +23,7 @@ export default function Layout({ children, home }) {
           name="description"
           content="Learn how to build a personal website using Next.js"
         />
-        <mete
+        <meta
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
             siteTitle
